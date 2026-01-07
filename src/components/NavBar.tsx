@@ -49,12 +49,12 @@ export default function NavBar() {
       {/* second part */}
 
         <div className='hidden relative shadow  w-[49%]  rounded-md cursor-pointer lg:flex items-center '>
-          <button className=' p-3.5 cursor-pointer relative z-20 h-[55px] w-[9%] text-gray-500 rounded-l-sm flex  items-center gap-1   font-semibold bg-gray-300 '>Tous <ChevronDown  size={25}/></button>
+          <button className=' p-3.5 cursor-pointer relative z-20 h-[55px] w-[9%] lg:w-[14%] text-gray-500 rounded-l-sm flex  items-center gap-1   font-semibold bg-gray-300 '>Tous <ChevronDown  size={25}/></button>
           <input className=' cursor-pointer bg-white outline-none h-[55px] absolute rounded-r-md pr-10  text-black w-[87%] left-20 z-10 p-3.75 ' type="text" placeholder='entrer un truc' />
-          <Search  className='cursor-pointer bg-[#ee6b91] h-[55px] w-[7.5%] py-3  absolute right-0  rounded-r-md  z-50'   color="#413d40" />
+          <Search  className='cursor-pointer bg-[#ee6b91] h-[55px] w-[7.5%] lg:w-[13%] py-3  absolute right-0 lg:-right-6  rounded-r-md  z-50'   color="#413d40" />
         </div>
         
-
+                         
       {/* third part */}
       <div className='flex items-center gap-7 lg:gap-10 '>
             <Link  href='/favorite' className='relative'>
