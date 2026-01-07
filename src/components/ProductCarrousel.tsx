@@ -1,6 +1,6 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Product = {
   id: number;
@@ -24,6 +24,12 @@ export default function ProductCarousel() {
 
   const visibleCount = 6; // desktop
   const [index, setIndex] = useState(0);
+  // roudre le pb de build avec windows
+  const [width, setWidth] = useState(0)
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  }, [])
+
 
   const next = () => {
     setIndex((prev) =>
@@ -49,7 +55,7 @@ export default function ProductCarousel() {
 
       {/* contenu */}
       <div className=" flex lg:mx-20 gap-3 overflow-x-auto md:overflow-hidden  scrollbar-hide ">
-        {(window.innerWidth < 768 ? products: products.slice(index, index + visibleCount)).map((product) => (
+        {(width < 768 ? products: products.slice(index, index + visibleCount)).map((product) => (
           <div key={product.id}
             className=" whitespace-nowrap px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-semibold cursor-pointer transition"           >
             {product.title}
