@@ -31,7 +31,7 @@ export default function SideBar() {
 
 
   return (
-    <div className=' hidden xl:block shadow w-[20%] pl-10  pr-1 space-y-12 absolute -top-5 left-0  h-screen overflow-y-auto py-5 text-xl'>
+    <div className=' hidden lg:block shadow w-[20%] pl-10  pr-1 space-y-12 absolute -top-5 left-0  h-screen overflow-y-auto py-5 text-xl'>
 
       {/* department */}
       <div>
