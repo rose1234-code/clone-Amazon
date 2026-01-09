@@ -47,7 +47,7 @@ export default function MainSection() {
 
     
   return (
-    <div className='w-[92%] md:grid  space-y-16  md:grid-cols-2 lg:grid-cols-3 items-center  lg:pl-4 lg:py-4 md:ml-[50px]  ml-[25px] lg:ml-[410px] lg:gap-1 '>
+    <div className='w-[92%] flex flex-wrap  lg:pl-4 lg:py-4 md:ml-[50px]  ml-[25px] lg:ml-[410px] lg:gap-1 '>
 
         {isLoading? (<ProductsSkeleton />):
             (productCollection.map( product=>(
