@@ -31,7 +31,7 @@ export default function SideBar() {
 
 
   return (
-    <div className=' hidden lg:block shadow w-[20%] pl-10  pr-1 space-y-12 absolute -top-5 left-0  h-screen overflow-y-auto py-5 text-xl'>
+    <div className=' hidden lg:block shadow w-[21%] pl-10  pr-1 space-y-12 absolute -top-5 left-0  h-screen overflow-y-auto py-5 text-xl'>
 
       {/* department */}
       <div>
@@ -103,14 +103,14 @@ export default function SideBar() {
           </div>
 
           <div className='flex items-center gap-0.5'>
-            <FaStar color='#c10015' size={21} />
-            <FaStar color='#c10015' size={21} />
-            <FaStar color='#c10015' size={21} />
-            <FaStar color='#c10015' size={21} /> 
-            <Star color='#c10015' size={21} />
+            <FaStar color='#c10015' size={18} />
+            <FaStar color='#c10015' size={18} />
+            <FaStar color='#c10015' size={18} />
+            <FaStar color='#c10015' size={18} /> 
+            <Star color='#c10015' size={18} />
           </div>
 
-          <div> & en haut</div>
+          <div className='text-lg'> & en haut</div>
         </div>
 
         <div className='space-y-3 mt-10'>
@@ -126,8 +126,8 @@ export default function SideBar() {
           <div className='bg-[#429bbd] absolute -left-4.5 w-9 -top-2.5 h-9 rounded-full'></div>
           <div className='bg-white absolute -left-2.5  w-5 -top-0.5 h-5 rounded-full'></div>
           {/* right */}
-          <div className=' absolute right-0 bg-[#429bbd] w-10 -top-3 h-10 rounded-full'></div>
-          <div className='bg-white absolute right-2.5  w-5 -top-0.5 h-5 rounded-full'></div>
+          <div className=' absolute right-10 bg-[#429bbd] w-10 -top-3 h-10 rounded-full'></div>
+          <div className='bg-white absolute right-12  w-5 -top-0.5 h-5 rounded-full'></div>
 
         </div>
 
@@ -143,8 +143,8 @@ export default function SideBar() {
           <div className='bg-white absolute -left-1.5 w-5 -top-0.5 h-5 rounded-full'></div>
 
           {/* right */}
-          <div className=' absolute right-0 bg-[#429bbd] w-10 -top-3 h-10 rounded-full'></div>
-          <div className='bg-white absolute right-2.5  w-5 -top-0.5 h-5 rounded-full'></div>
+          <div className=' absolute right-10 bg-[#429bbd] w-10 -top-3 h-10 rounded-full'></div>
+          <div className='bg-white absolute right-12  w-5 -top-0.5 h-5 rounded-full'></div>
 
         </div>
 
