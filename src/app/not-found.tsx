@@ -6,12 +6,12 @@ import React from 'react'
 
 export default function notFound() {
   return (
-    <div className='h-screen' >
+    <div className='h-screen ' >
       <NavBar/>
-      <div className='flex  mt-20 fixed bottom-48  left-[651px]'>
+      <div className='flex items-center justify-center pt-38 lg:pt-80  '>
         <div className='space-y-10  text-center'> 
           <h1 className='text-3xl font-bold text-[#bb3252]'>404</h1>
-          <p className='font-bold text-lg text-gray-700'>The page you are looking for cannot be found.</p>
+          <p className='font-bold  text-md  md:text-lg text-gray-700'>The page you are looking for cannot be found.</p>
 
           <button className="btn-container">
             <div className="btn-back"></div>
