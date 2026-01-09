@@ -24,7 +24,7 @@ export default function ProductCard({product}:ProductCardProps) {
       {/* image */}
       <div className='bg-gray-50 h-90 rounded-md lg:h-75'>
         <Link  href={`/details/${product.id}`} className='mb-1  relative '>
-          <img className='object-cover h-full' src={product.thumbnail} alt="none" width={"100%"} />
+          <img className='object-contain h-full' src={product.thumbnail} alt="none" width={"100%"} />
       </Link>             
       </div>
 
