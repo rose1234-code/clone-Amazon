@@ -39,9 +39,9 @@ export default function NavBar() {
          <Menu size={28} color='white' />               
         </div>
         {/* first part */}
-        <div className="h-16 lg:h-20 p-2 flex items-center cursor-pointer hover:rounded-md hover:ring hover:ring-gray-300 ">
+        <Link href="/" className="h-16 lg:h-20 p-2 flex items-center cursor-pointer hover:rounded-md hover:ring hover:ring-gray-300 ">
           <img src="/logo.png" alt="logo" className="h-full object-contain"  width={'100%'}/>
-        </div>    
+        </Link >    
       </div>       
       
            

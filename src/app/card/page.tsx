@@ -50,18 +50,18 @@ export default function page() {
 
         {/* head of description */}
         
-        <div className='flex justify-between mt-20 px-14 '>
+        <div className='flex flex-col lg:flex-row justify-between mt-20 lg:px-14  px-2'>
 
           {/* first contenair */}
-          <div className='w-[63%] ring ring-gray-200 py-2 rounded-3xl '>
-            <div className='px-14 flex my-7 items-center justify-between'>
-              <h1 className='text-4xl font-bold '>Cart <span className='text-sm font-semibold '>({selectedCardIds.length} products)</span></h1>
-              <button onClick={()=>{clearAll()}} className='text-2xl  font-semibold flex items-center gap-1 text-amber-600'>  <X  size={22}/>clear all</button>
+          <div className=' w-full lg:w-[63%] ring ring-gray-200 py-2 rounded-3xl '>
+            <div className='lg:px-14 px-3 flex my-7 items-center justify-between'>
+              <h1 className='text-2xl lg:text-3xl font-bold '>Cart <span className='text-sm font-semibold '>({selectedCardIds.length} products)</span></h1>
+              <button onClick={()=>{clearAll()}} className='px-lg lg:text-2xl  font-semibold flex items-center gap-1 text-amber-600'>  <X  size={22}/>clear all</button>
             </div>
-            <div className='flex px-14 items-center  mb-5 justify-between text-2xl font-bold'>
-              <p>Product</p>
-              <p className='ml-54'>Count</p>
-              <p>Price</p>
+            <div className='flex px-2 lg:px-14 items-center  mb-5 justify-between text-lg lg:text-2xl font-bold'>
+              <p className='text-xl'>Product</p>
+              <p className=' ml-20 lg:ml-54 text-xl'>Count</p>
+              <p className='text-xl'>Price</p>
               <p></p>
             </div>
             {/* components card */}
@@ -75,12 +75,12 @@ export default function page() {
 
           {/* second container */}
 
-          <div className=' w-[30%] p-5  rounded-3xl h-[450px] bg-gray-200'>
+          <div className='w-full lg:w-[30%] p-5  rounded-3xl h-[450px] bg-gray-200'>
             <h1 className='text-2xl font-bold my-2'>Promo Code </h1>
 
             <div className='flex justify-between mt-5 px-1.5 py-1.5 mb-9 rounded-full w-full ring ring-gray-500'>
               <input className=' w-[80%] px-2 outline-none text-xl' placeholder='type here' type="text" />
-              <button className=' w-[20%] py-1.5 px-3 rounded-full bg-black text-white text-center text-xl'>Applay</button>
+              <button className='w-[28%] lg:w-[20%] py-1.5 px-3 rounded-full bg-black text-white text-center text-xl'>Applay</button>
             </div>
 
             <hr className='ring ring-gray-300 border-none mb-8' />
@@ -103,7 +103,7 @@ export default function page() {
 
         {/* last elements */}
 
-        <div className='rounded-3xl flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
+        {/* <div className='rounded-3xl flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
           <img className='w-[10%] absolute left-50 z-10 h-[180px] -top-4 object-cover ' src="/watch.png" alt="none" width={'100%'} />
           <div className='h-[55px] w-[55px] -bottom-6 -left-6 border border-white rounded-full absolute'></div>
           <div className='h-[55px] w-[55px] top-6 left-54  border border-white rounded-full absolute'></div>
@@ -116,7 +116,7 @@ export default function page() {
             <button className='px-5 py-1.5 text-2xl ring ring-gray-200 rounded-xl'>Shop now</button>
           </div>
           <img className='w-[10%] h-[180px] absolute right-50 -bottom-3 object-cover ' src="/watch.png" alt="none" width={'100%'} />
-      </div>
+        </div> */}
         
 
         <Footer/>

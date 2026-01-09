@@ -37,7 +37,7 @@ export default function SideBar() {
       <div>
         <h1>Departement</h1>
 
-        <div className="flex items-center space-x-2 hover:bg-green-900 hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
+        <div className="flex items-center space-x-2 hover:bg-[#364463] hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
             <input type="radio" name="category" className="appearance-none w-5 h-5 rounded-full shadow border-4
                 border-gray-400
                 bg-blue-600
@@ -58,7 +58,7 @@ export default function SideBar() {
       <div>
         {/* marques */}
         <h1>Marques</h1>
-        <div className="flex items-center space-x-2 hover:bg-green-900 hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
+        <div className="flex items-center space-x-2 hover:bg-[#364463] hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
             <input type="radio" name="category" className="appearance-none w-5 h-5 rounded-full shadow border-4
                 border-gray-400
                 bg-blue-600
@@ -82,7 +82,7 @@ export default function SideBar() {
         <h1 className='text-2xl '>Avis client</h1>
 
 
-        <div className="flex items-center space-x-2 hover:bg-green-900 hover:text-white mt-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
+        <div className="flex items-center space-x-2 hover:bg-[#364463] hover:text-white mt-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
           <input type="radio" name="category" className="appearance-none w-6 h-6 rounded-full shadow border-6
               border-gray-400
               bg-blue-600
@@ -92,7 +92,7 @@ export default function SideBar() {
 
         </div>
 
-        <div className='flex items-center gap-2 px-2 hover:border  group hover:bg-green-900 hover:text-white hover:rounded-md'>
+        <div className='flex items-center gap-2 px-2 hover:border  group hover:bg-[#364463] hover:text-white hover:rounded-md'>
 
           <div className="flex items-center my-2  py-1.5  cursor-pointer">
             <input  type="radio" name="brand" className="appearance-none w-5 h-5 rounded-full shadow border-4 bg-transparent
@@ -150,7 +150,7 @@ export default function SideBar() {
 
         <div className='mt-20'>
           <h1>Programmes exclusivity</h1>
-          <div className='px-2 hover:border  group hover:bg-green-900 hover:text-white hover:rounded-md'>
+          <div className='px-2 hover:border  group hover:bg-[#364463] hover:text-white hover:rounded-md'>
             <div className="flex items-center gap-2 my-2  py-1.5  cursor-pointer">
               <input  type="radio" name="brand" className="appearance-none w-5 h-5 rounded-sm shadow border-4 bg-transparent
                   border-gray-400

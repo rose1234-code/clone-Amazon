@@ -15,7 +15,7 @@ export default function ProductCard({product}:ProductCardProps) {
   const {toggleHeartIcon,selectedFavoriteIds}=useStoreFavorite()
 
   return (                  
-    <div className='  w-[95%] lg:w-75  h-120 rounded-md  relative '>
+    <div className='transition transform duration-300 hover:scale-110  w-[95%] lg:w-75  h-120 rounded-md  relative '>
 
       <div onClick={()=>{toggleHeartIcon(product.id)}} className={`absolute z-50  left-2 top-2 w-10 h-10 p-2 rounded-full shadow ${selectedFavoriteIds.includes(product.id)&& 'bg-gray-300'} ` }>
         <FaHeart size={40} color='#EF4444' className={`w-full h-full ` }/>
