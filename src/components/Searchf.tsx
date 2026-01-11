@@ -35,7 +35,7 @@ export default function Searchf() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 { listProduct.length >0 ? listProduct.map(product => (
                     <div key={product.id} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <Search id={product.id} image={product.thumbnail} price={product.price} addCard={()=>toggleCardIcon(product.id)} title={product.title}/>
+                        <Search id={product.id} image={product.thumbnail} price={product.price} addCard={toggleCardIcon} title={product.title}/>
                     </div>
                 )): (<div>no product for your search</div>)}
             </div>
