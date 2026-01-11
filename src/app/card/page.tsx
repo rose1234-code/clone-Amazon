@@ -51,7 +51,7 @@ export default function page() {
 
         {/* head of description */}
         
-        <div className='flex flex-col lg:flex-row justify-between mt-20 lg:px-14  px-2'>
+        <div className='flex flex-col lg:flex-row justify-between pt-34 lg:px-14  px-2'>
 
           {/* first contenair */}
           <div className=' w-full lg:w-[63%] ring ring-gray-200 py-2 rounded-3xl '>

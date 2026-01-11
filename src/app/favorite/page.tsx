@@ -9,7 +9,7 @@ export default function page() {
   return (
     <div>
         <NavBar/>
-        <div className='my-14 px-8 lg:px-14 '>
+        <div className='pb-14 pt-30 px-8 lg:px-14 '>
             <Favorite/>
         </div>
         {/* <Footer/> */}

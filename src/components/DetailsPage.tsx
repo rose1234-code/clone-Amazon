@@ -32,7 +32,7 @@ export default function DetailsPage({productId}:Props) {
     
 
   return (
-    <div className='mt-30 text-xl px-4 lg:px-14'>
+    <div className='pt-34 text-xl px-4 lg:px-14'>
 
 
       {/* first colone */}

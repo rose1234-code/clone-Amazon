@@ -1,22 +1,25 @@
 'use client'
 
-import DetailsPage from '@/components/DetailsPage'
-import Footer from '@/components/Footer'
-import NavBar from '@/components/NavBar'
-import { useParams } from 'next/navigation'
-import React from 'react'
+import DetailsPage from "@/components/DetailsPage"
+import Footer from "@/components/Footer"
+import NavBar from "@/components/NavBar"
+import { useParams } from "next/navigation"
 
+// type Props = {
+//   params: { id: number}
+// }
 
+export default function Page() {
+const query=useParams()
+const productIdUrl= Number(query.id)
+console.log(productIdUrl)
+ 
 
-export default function page() {
-    const params=useParams()
-    const productIdUrl =Number(params.id)
-    
   return (
-    <div>
-      <NavBar/>
-      <DetailsPage  productId={productIdUrl}/>
-      <Footer/>
-    </div>
+    <>
+      <NavBar />
+      <DetailsPage productId={productIdUrl} />
+      <Footer />
+    </>
   )
 }
