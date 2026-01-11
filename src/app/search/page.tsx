@@ -2,6 +2,7 @@
 
 import { productState } from '@/components/MainSection'
 import NavBar from '@/components/NavBar'
+import Search from '@/components/Search'
 import axios from 'axios'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -32,25 +33,7 @@ export default function page() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {listProduct.map(product => (
                     <div key={product.id} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        {/* Image */}
-                        <div className="bg-gray-100 flex items-center justify-center h-56">
-                          <img src={product.thumbnail} alt={product.title} className="h-full object-contain group-hover:scale-105 transition duration-300"/>
-                        </div>
-                
-                        {/* Content */}
-                        <div className="p-4 flex flex-col gap-3">
-                          <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
-                            {product.title}
-                          </h2>
-                
-                          <p className="text-xl font-bold text-red-500">
-                            ${product.price}
-                          </p>
-                
-                          <Link href='/card' className="mt-auto text-center bg-red-500 hover:bg-red-600 text-white text-lg font-semibold py-2 rounded-xl transition">
-                            Commander
-                          </Link>
-                        </div>
+                        <Search image={product.thumbnail} price={product.price} title={product.title}/>
                     </div>
                 ))}
             </div>

@@ -104,7 +104,7 @@ export default function page() {
 
         {/* last elements */}
 
-        <div className='rounded-3xl flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
+        <div className='hidden rounded-3xl lg:flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
           <img className='w-[10%] absolute left-50 z-10 h-[180px] -top-4 object-cover ' src="/watch.png" alt="none" width={'100%'} />
           <div className='h-[55px] w-[55px] -bottom-6 -left-6 border border-white rounded-full absolute'></div>
           <div className='h-[55px] w-[55px] top-6 left-54  border border-white rounded-full absolute'></div>
