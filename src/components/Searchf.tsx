@@ -1,11 +1,12 @@
 'use client'
 
 import { productState } from '@/components/MainSection'
-import Search from '@/components/Search'
+
 import { useStoreCard } from '@/store/card.store'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import Search from './Search'
 
 
 export default function Searchf() {

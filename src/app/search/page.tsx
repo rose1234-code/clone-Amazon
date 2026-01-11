@@ -2,7 +2,7 @@ import NavBar from '@/components/NavBar'
 import Searchf from '@/components/Searchf'
 import React, { Suspense } from 'react'
 
-export default function page() {
+export default function Page() {
   return (
     <div>
       <NavBar/>
