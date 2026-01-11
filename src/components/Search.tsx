@@ -1,12 +1,16 @@
+import { useStoreCard } from '@/store/card.store'
 import Link from 'next/link'
 import React from 'react'
 
 interface props{
     image:string,
     title:string,
-    price:number
+    price:number,
+    id:number,
+    addCard:(id:number)=>void
 }
-export default function Search({image,title,price}:props) {
+export default function Search({image,title,price,id,addCard}:props) {
+
   return (
     <div>
       {/* Image */}
@@ -21,7 +25,7 @@ export default function Search({image,title,price}:props) {
        <p className="text-xl font-bold text-red-500">
          ${price}
        </p>
-       <Link href='/card' className="mt-auto text-center bg-red-500 hover:bg-red-600 text-white text-lg font-semibold py-2 rounded-xl transition">
+       <Link href='/card' onClick={()=>addCard(id)}  className="mt-auto text-center bg-red-500 hover:bg-red-600 text-white text-lg font-semibold py-2 rounded-xl transition">
          Commander
        </Link>
      </div>
