@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 import { Heart } from 'lucide-react'
 import {Search,ShoppingBag ,ChevronDown,ChevronUp} from 'lucide-react';
 import { useStoreFavorite } from '@/store/favorite.store';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Menu, MapPinPlus } from 'lucide-react';
 
 import { useStoreCard } from '@/store/card.store';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -31,6 +32,17 @@ export default function NavBar() {
     }
     const {selectedCardIds}=useStoreCard()
    const {selectedFavoriteIds,toggleHeartIcon,}=useStoreFavorite()
+
+  //  recherche
+  const [query,setQuery]=useState('')
+  const router=useRouter()
+  const handleSearch=(e:React.FormEvent)=>{
+    e.preventDefault()
+
+    if(!query)  return
+    router.push(`/search?query=${query}`)
+
+  }
   return (
     <>
     <div className="flex  relative items-center justify-between w-full text-[rgb(255,255,255)] overflow-hidden bg-[#0F172A] px-3  lg:px-10">
@@ -48,11 +60,11 @@ export default function NavBar() {
 
       {/* second part */}
 
-        <div className='hidden relative shadow  w-[49%]  rounded-md cursor-pointer lg:flex items-center '>
+        <form onSubmit={handleSearch} className='hidden relative shadow  w-[49%]  rounded-md cursor-pointer lg:flex items-center '>
           <button className=' p-3.5 cursor-pointer relative z-20 h-[55px] w-[9%] lg:w-[10%] text-gray-500 rounded-l-sm flex  items-center gap-1   font-semibold bg-gray-300 '>Tous <ChevronDown  size={25}/></button>
-          <input className=' cursor-pointer bg-white outline-none h-[55px] absolute rounded-r-md pr-10  text-black w-[87%] lg:w-[90%] left-20 lg:left-14 z-10 p-3.75 lg:py-2  lg:pl-9' type="text" placeholder='entrer un truc' />
+          <input onChange={(e)=>{setQuery(e.target.value)}} className=' cursor-pointer bg-white outline-none h-[55px] absolute rounded-r-md pr-10  text-black w-[87%] lg:w-[90%] left-20 lg:left-14 z-10 p-3.75 lg:py-2  lg:pl-9' type="text" placeholder='entrer un truc' />
           <Search  className='cursor-pointer bg-[#ee6b91] h-[55px] w-[7.5%] lg:w-[7%] py-3  absolute right-0 lg:-right-6  rounded-r-md  z-50'   color="#413d40" />
-        </div>
+        </form>
         
                          
       {/* third part */}

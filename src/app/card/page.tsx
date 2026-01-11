@@ -7,6 +7,7 @@ import NavBar from '@/components/NavBar'
 import { useStoreCard } from '@/store/card.store'
 import axios from 'axios'
 import { X } from 'lucide-react'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export default function page() {
@@ -97,13 +98,13 @@ export default function page() {
               <span className='font-bold'>${total===0? total.toFixed(2): (total-Discount).toFixed(2)}</span>
             </div>
 
-            <button className='rounded-2xl w-full bg-black text-xl text-white text-center py-4 px-6'>Continue to checkout</button>
+            <Link href="https://wa.me/message/X6HAVLNKAVBMO1"  target='_blank' className='rounded-2xl w-full block bg-black text-xl text-white text-center py-4 px-6'>Continue to checkout</Link>
           </div>
         </div>
 
         {/* last elements */}
 
-        {/* <div className='rounded-3xl flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
+        <div className='rounded-3xl flex  relative h-[200px] bg-gray-900 mt-3.5 w-[60%] overflow-hidden mx-14'>
           <img className='w-[10%] absolute left-50 z-10 h-[180px] -top-4 object-cover ' src="/watch.png" alt="none" width={'100%'} />
           <div className='h-[55px] w-[55px] -bottom-6 -left-6 border border-white rounded-full absolute'></div>
           <div className='h-[55px] w-[55px] top-6 left-54  border border-white rounded-full absolute'></div>
@@ -116,7 +117,7 @@ export default function page() {
             <button className='px-5 py-1.5 text-2xl ring ring-gray-200 rounded-xl'>Shop now</button>
           </div>
           <img className='w-[10%] h-[180px] absolute right-50 -bottom-3 object-cover ' src="/watch.png" alt="none" width={'100%'} />
-        </div> */}
+        </div>
         
 
         <Footer/>
