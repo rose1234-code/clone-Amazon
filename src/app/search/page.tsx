@@ -1,45 +1,58 @@
-'use client'
+"use client";
+import { productState } from "@/components/MainSection";
+import NavBar from "@/components/NavBar";
+import  ProductCard  from "@/components/ProductCard";
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-import { productState } from '@/components/MainSection'
-import NavBar from '@/components/NavBar'
-import Search from '@/components/Search'
-import axios from 'axios'
-import { useSearchParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+const Page = () => {
+
+  // useSearchParams  permet de lire les paramètres d’URL.
+  //  here ,query is a value that  people enter inside input that who was url
+  const query = useSearchParams().get("query");
+  console.log("Search Query:", query);
+  const [products, setProducts] = useState<productState[]>([]);
+
+  const fetchProducts = async () => {
+    await axios
+      .get(
+        "https://fakestoreapiserver.reactbd.org/api/walmartproducts?page=1&perPage=20"
+      )
+      .then((result) => {
+        console.log(result?.data);
+        setProducts(result?.data?.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
 
-export default function page() {
-    const variable=useSearchParams().get('query')
-    const [productCollection,setProductCollection]=useState<productState[]>([])
+  // function of research the value we want
+  const searchResult = products.filter((product) =>
+    product.title.toLowerCase().includes(query?.toLowerCase() || "")
+  );
 
-    const fetchProduct= async()=>{
-        await axios.get('https://dummyjson.com/products').then(result=>{
-            console.log(result?.data)
-            setProductCollection(result?.data?.products)
-        }).catch(error=>console.log(error))
-    }
 
-    useEffect(()=>{
-        fetchProduct()
-    },[])
-
-    
-    const listProduct=productCollection.filter(product=>(product.title.toLowerCase().includes(variable?.toLowerCase() || '')))
   return (
-    <>
-        <NavBar/>
-   
-        <div className="w-[95%] mx-auto px-4 mt-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                { listProduct.length >0 ? listProduct.map(product => (
-                    <div key={product.id} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <Search image={product.thumbnail} price={product.price} title={product.title}/>
-                    </div>
-                )): (<div>no product for your search</div>)}
-            </div>
+    <div className="border-t">
+      <NavBar />
+
+      <div className="p-10 mt-20">
+
+        <h1 className="text-3xl font-bold mb-5 ">
+          {`Search Results for "${query}"`}
+        </h1>
+
+        <div className="flex gap-10 flex-wrap">
+          {searchResult.length > 0 ? searchResult.map(product=> <ProductCard key={product?.id} product={product} />) :( <p>no product for your search</p> )}
         </div>
 
-    </>
-  )
-  
-}
+      </div>
+
+    </div>
+  );
+};
+export default Page;
