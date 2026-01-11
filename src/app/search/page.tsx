@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
+export const dynamic = 'force-dynamic'
+
 export default function page() {
     const variable=useSearchParams().get('query')
     const [productCollection,setProductCollection]=useState<productState[]>([])
