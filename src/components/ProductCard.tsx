@@ -15,27 +15,27 @@ export default function ProductCard({product}:ProductCardProps) {
   const {toggleHeartIcon,selectedFavoriteIds}=useStoreFavorite()
 
   return (                  
-    <div className='transition transform duration-300 hover:scale-110  w-[95%]  lg:w-110 lg:rounded-lg h-120  rounded-md  relative '>
+    <div className='w-80  lg:w-110  lg:rounded-lg h-124  lg:h-120   rounded-md  relative '>
 
       <div onClick={()=>{toggleHeartIcon(product.id)}} className={`absolute z-50  left-2 top-2 w-10 h-10 p-2 rounded-full shadow ${selectedFavoriteIds.includes(product.id)&& 'bg-gray-300'} ` }>
         <FaHeart size={40} color='#EF4444' className={`w-full h-full ` }/>
       </div>
 
       {/* image */}
-      <div className='bg-gray-50 h-90 rounded-md lg:h-75'>
+      <div className='bg-gray-50 h-80 rounded-md md:h-75  '>
         <Link  href={`/details/${product.id}`} className='mb-1  relative '>
-          <img className='object-contain h-full' src={product.thumbnail} alt="none" width={"100%"} />
+          <img className='object-contain h-full group-hover:scale-105 transition duration-300' src={product.thumbnail} alt="none" width={"100%"} />
       </Link>             
       </div>
 
       <span  onClick={()=>{toggleCardIcon(product.id)}}  
-        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-3 rounded-full flex items-center`}>
+        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-10  rounded-full flex items-center`}>
           +
       </span>
 
         
       {/* text */}           
-      <div className=''>
+      <div className='px-3'>
 
         <div className='flex  items-center gap-2'>
           <button className='hidden lg:flex text-[14px] w-22 text-white bg-[rgb(204,12,57)] font-semibold shadow rounded-md py-1.5  px-2.5'>42% off</button>
