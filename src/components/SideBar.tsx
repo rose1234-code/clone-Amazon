@@ -31,7 +31,7 @@ export default function SideBar() {
 
 
   return (
-    <div className=' hidden lg:block shadow w-[21%] pl-10  pr-1 space-y-12 absolute -top-5 left-0  h-screen overflow-y-auto py-5 text-xl'>
+    <div className=' shadow pl-10  pr-1 space-y-12  overflow-y-auto py-5 text-xl'>
 
       {/* department */}
       <div>
@@ -120,7 +120,7 @@ export default function SideBar() {
 
 
         <div className='mt-8 relative '>
-          <div className='bg-[#429bbd] w-60 ml-5 h-4 '></div>
+          <div className='bg-[#429bbd] w-40 ml-5 h-4 '></div>
           {/* left */}
           <div className='bg-white absolute border-4 -left-6 border-[#429bbd] w-12 -top-4 h-12 rounded-full'></div>
           <div className='bg-[#429bbd] absolute -left-4.5 w-9 -top-2.5 h-9 rounded-full'></div>
@@ -137,7 +137,7 @@ export default function SideBar() {
         </div>
 
         <div className='mt-8 relative '>
-          <div className='bg-[#429bbd] w-60 ml-5  h-4 '></div>
+          <div className='bg-[#429bbd] w-40 ml-5  h-4 '></div>
           {/* left */}
           <div className=' absolute -left-4 bg-[#429bbd] w-10 -top-3 h-10 rounded-full'></div>
           <div className='bg-white absolute -left-1.5 w-5 -top-0.5 h-5 rounded-full'></div>

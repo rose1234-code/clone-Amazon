@@ -46,12 +46,12 @@ export default function MainSection() {
 
 
     
-  return (
-    <div className='w-[80%] space-y-6 md:grid   md:grid-cols-2 lg:grid-cols-3 items-center  lg:pl-4 lg:py-4 md:ml-[50px]  ml-[25px] md:ml-[80px] lg:ml-[410px]  md:gap-20  gap-5 '>
+  return ( 
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-7 lg:grid-cols-3 mx-auto '>
 
         {isLoading? (<ProductsSkeleton />):
             (productCollection.map( product=>(
-                <div key={product.id} className='w-80 lg:w-110 group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 lg:overflow-hidden'>
+                <div key={product.id} className=' group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 lg:overflow-hidden'>
                     <ProductCard    product={product} />
                 </div>
             )))

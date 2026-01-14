@@ -15,7 +15,7 @@ export default function ProductCard({product}:ProductCardProps) {
   const {toggleHeartIcon,selectedFavoriteIds}=useStoreFavorite()
 
   return (                  
-    <div className='w-80  lg:w-110  lg:rounded-lg h-124  lg:h-120   rounded-md  relative '>
+    <div className='w-74 md:w-85  lg:w-lg lg:rounded-lg h-124  lg:h-120   rounded-md  relative '>
 
       <div onClick={()=>{toggleHeartIcon(product.id)}} className={`absolute z-50  left-2 top-2 w-10 h-10 p-2 rounded-full shadow ${selectedFavoriteIds.includes(product.id)&& 'bg-gray-300'} ` }>
         <FaHeart size={40} color='#EF4444' className={`w-full h-full ` }/>
@@ -29,7 +29,7 @@ export default function ProductCard({product}:ProductCardProps) {
       </div>
 
       <span  onClick={()=>{toggleCardIcon(product.id)}}  
-        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-10  rounded-full flex items-center`}>
+        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-20  rounded-full flex items-center`}>
           +
       </span>
 

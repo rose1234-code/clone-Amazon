@@ -24,9 +24,16 @@ export default function Page() {
         <ProductCarousel/>
       </div>
 
-      <div className="flex mt-10 relative">
-        <SideBar/>
-        <MainSection/>
+      <div className="flex  min-h-screen">
+
+        <aside className="hidden mt-6 lg:block w-[280px] shrink-0">
+          <SideBar />
+        </aside>
+
+        <main className="flex-1 px-6 py-6">
+          <MainSection />
+        </main>
+
       </div>
 
       <div className=''>
