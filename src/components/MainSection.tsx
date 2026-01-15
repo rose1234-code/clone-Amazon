@@ -5,6 +5,10 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 import ProductsSkeleton from './ProductsSkeleton.tsx'
 
+interface MainSectionProps{
+    selectedTitle:string|null ,
+}
+
 
 export type Review = {
   rating: number
@@ -27,7 +31,10 @@ export interface productState{
     comment:string
 }
 
-export default function MainSection() {
+
+
+export default function MainSection({selectedTitle}:MainSectionProps) {
+
     const [productCollection,setProductCollection]=useState<productState[]>([])
     // etat du skeleton
     const [isLoading, setIsLoading]=useState(true)
@@ -44,21 +51,22 @@ export default function MainSection() {
         fetchProduct()
     },[])
 
+    // filter product by categories
+    const filterProductByCategories=selectedTitle ?
+        productCollection.filter(product=>product.category.toLowerCase().includes(selectedTitle.toLowerCase())):productCollection
+    
 
     
   return ( 
     <div className='grid grid-cols-1 md:grid-cols-2 gap-7 lg:grid-cols-3 mx-auto '>
 
         {isLoading? (<ProductsSkeleton />):
-            (productCollection.map( product=>(
+            (filterProductByCategories.map( product=>(
                 <div key={product.id} className=' group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 lg:overflow-hidden'>
                     <ProductCard    product={product} />
                 </div>
             )))
         }
-
-       
-
 
     </div>
   )

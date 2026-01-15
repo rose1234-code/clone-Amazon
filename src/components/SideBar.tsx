@@ -4,15 +4,20 @@ import React, { useEffect, useState } from 'react'
 import Category from './Category'
 import axios from 'axios'
 import { productState } from './MainSection'
-import Brand from './Brand'
 import { FaStar } from 'react-icons/fa6'
 import { Star } from 'lucide-react';
-export default function SideBar() {   
+
+// state lifting
+interface SideBaProps{
+  onSelectedTitle:(title:string | null)=>void
+}
+
+export default function SideBar({onSelectedTitle}:SideBaProps) {   
 
 
   const [productCollection,setProductCollection]=useState<productState []>([])
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [selectedBrand,setSelectBrand]=useState(null)
+
   
       const fetchProduct= async()=>{
           await axios.get('https://dummyjson.com/products').then(result=>{
@@ -37,43 +42,14 @@ export default function SideBar() {
       <div>
         <h1>Departement</h1>
 
-        <div className="flex items-center space-x-2 hover:bg-[#364463] hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
-            <input type="radio" name="category" className="appearance-none w-5 h-5 rounded-full shadow border-4
-                border-gray-400
-                bg-blue-600
-                checked:border-[#429bbd]  "
-            />
-            <label >Tous</label>
-        </div>
-
         {
           categories.map(category=>(
-            <Category   key={category}  title={category} isSelected={selectedCategory === category}  onSelect={() => setSelectedCategory(category)}/>                          
+            <Category   key={category} onSelectedTitle={()=>onSelectedTitle(category)} title={category} isSelected={selectedCategory === category}  onSelect={() => setSelectedCategory(category)}/>                          
           ))
         }
       </div>
 
-      {/* brand */}
-
-      <div>
-        {/* marques */}
-        <h1>Marques</h1>
-        <div className="flex items-center space-x-2 hover:bg-[#364463] hover:text-white my-2 hover:border px-2 py-1.5 hover:rounded-md group cursor-pointer">
-            <input type="radio" name="category" className="appearance-none w-5 h-5 rounded-full shadow border-4
-                border-gray-400
-                bg-blue-600
-                checked:border-[#429bbd]  "
-            />
-            <label >Tous</label>
-        </div>              
-
-        {
-          productCollection.filter(product => product.brand && product.brand.trim() !== "").map(product => (
-            <Brand key={product.id} title={product.brand} />
-          ))
-
-        }
-      </div>
+      
 
       {/* avis client */}
 

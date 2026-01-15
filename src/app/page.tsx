@@ -1,17 +1,18 @@
-// import Herosection from '@/components/Herosection'
+'use client'
+
+
 import Footer from '@/components/Footer'
 import LastTitle from '@/components/LastTitle'
 import MainSection from '@/components/MainSection'
 import NavBar from '@/components/NavBar'
 import ProductCarousel from '@/components/ProductCarrousel'
 import SideBar from '@/components/SideBar'
-// import ProductCarousel from '@/components/ProductCarrousel'
 import Title from '@/components/Title'
-import { FaStar } from "react-icons/fa6";
-import React from 'react'
-import Squeleton from '@/components/ProductsSkeleton.tsx'
+import React, { useState } from 'react'
 
 export default function Page() {
+
+  const [selectedTitle,setSelectedTitle]=useState<string | null>(null)
   return (
     <div className=' w-full'>
       
@@ -24,17 +25,21 @@ export default function Page() {
         <ProductCarousel/>
       </div>
 
+      {/* filter of product  with state lifting*/}
       <div className="flex  min-h-screen">
 
         <aside className="hidden mt-6 lg:block w-[280px] shrink-0">
-          <SideBar />
+          {/* envoie du titre clique */}
+          <SideBar onSelectedTitle={setSelectedTitle} />
         </aside>
 
         <main className="flex-1 px-6 py-6">
-          <MainSection />
+          {/* affiche les produits filtre */}
+          <MainSection selectedTitle={selectedTitle} />
         </main>
 
       </div>
+
 
       <div className=''>
         <Footer/>
