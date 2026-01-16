@@ -62,7 +62,7 @@ export default function MainSection({selectedTitle}:MainSectionProps) {
 
         {isLoading? (<ProductsSkeleton />):
             (filterProductByCategories.map( product=>(
-                <div key={product.id} className=' group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 lg:overflow-hidden'>
+                <div key={product.id} className=' group bg-white dark:ring-3 ring-gray-300 rounded-2xl shadow-md hover:shadow-xl dark:hover:bg-white transition-all duration-300 lg:overflow-hidden'>
                     <ProductCard    product={product} />
                 </div>
             )))

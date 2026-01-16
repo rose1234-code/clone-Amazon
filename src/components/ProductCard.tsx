@@ -22,14 +22,14 @@ export default function ProductCard({product}:ProductCardProps) {
       </div>
 
       {/* image */}
-      <div className='bg-gray-50 h-80 rounded-md md:h-75  '>
+      <div className='bg-gray-50 dark:bg-gray-100 h-80 rounded-md md:h-75  '>
         <Link  href={`/details/${product.id}`} className='mb-1  relative '>
           <img className='object-contain h-full group-hover:scale-105 transition duration-300' src={product.thumbnail} alt="none" width={"100%"} />
       </Link>             
       </div>
 
       <span  onClick={()=>{toggleCardIcon(product.id)}}  
-        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-20  rounded-full flex items-center`}>
+        className={`${selectedCardIds.includes(product.id) ? 'bg-[#474b53] text-white' :' bg-[#ffd631] '}  text-[34px] text-gray-900 font-semi-bold justify-center  w-10  h-10 absolute bottom-45 right-14  rounded-full flex items-center`}>
           +
       </span>
 

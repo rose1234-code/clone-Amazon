@@ -35,7 +35,7 @@ export default function AddCard ({id,image,price,name,onQtyChange}:AddCardProps)
             </div>
 
             <div className=' hidden absolute left-50 lg:flex w-[250px]'>
-              <h1 className='text-lg text-yellow-900 underline font-semibold flex flex-wrap font-bold w-full '>{name} </h1>
+              <h1 className='text-lg text-yellow-900 dark:text-gray-600 underline font-semibold flex flex-wrap font-bold w-full '>{name} </h1>
             </div>
 
           </div>

@@ -34,15 +34,15 @@ export default function Favorite() {
             <div onClick={()=>{clearAll()}} className= 'text-sm md:text-xl cursor-pointer text-red-500 flex items-center gap-1 '><Trash size={20}/>Clear All</div>
         </div>
         <div className='  w-full mt-8  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  items-center gap-7'>
-            { productFavorite.map(product=>(
+            {productFavorite.length>0 ? productFavorite.map(product=>(
                 <div key={product.id} className=''>
                     <div className='mb-1  cursor-pointer w-full bg-gray-50 rounded-md'>
                       <img className='object-cover line-clamp-2' src={product.thumbnail} alt="none" width={"100%"} />
                     </div>
-                    <button className="text-xl  cursor-pointer my-3 flex flex-wrap text-gray-600 w-full ">{product.title}</button>
+                    <button className="text-xl  cursor-pointer my-3 flex flex-wrap text-gray-600 dark:text-white w-full ">{product.title}</button>
                     <button onClick={()=>{toggleHeartIcon(product.id)}} className='text-white cursor-pointer rounded-md bg-red-600 text-2xl text-center w-full'>Remove</button>
                 </div>
-            ))}
+            )): (<p className='text-xl'>No product available in your favorite</p>)}
         </div>
     </>
   )

@@ -48,7 +48,7 @@ export default function ProductCarousel() {
       
       {/* bouton gauche (desktop) */}
       <button
-        onClick={previous} className="hidden md:flex absolute left-0 top-1/2 lg:left-16 -translate-y-1/2
+        onClick={previous} className="hidden md:flex absolute dark:text-black left-0 top-1/2 lg:left-16 -translate-y-1/2
         bg-white shadow ring ring-gray-200 p-2 rounded-md z-10">
         <ChevronLeft size={28} />
       </button>
@@ -57,14 +57,14 @@ export default function ProductCarousel() {
       <div className=" flex lg:mx-20 gap-3 overflow-x-auto md:overflow-hidden  scrollbar-hide ">
         {(width < 768 ? products: products.slice(index, index + visibleCount)).map((product) => (
           <div key={product.id}
-            className=" whitespace-nowrap px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-semibold cursor-pointer transition"           >
+            className=" whitespace-nowrap dark:text-black px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-semibold cursor-pointer transition"           >
             {product.title}
           </div>
         ))}
       </div>
 
       {/* bouton droit (desktop) */}
-      <button onClick={next} className="hidden md:flex absolute right-0 top-5 lg:right-120 xl:right-16 -translate-y-1/2
+      <button onClick={next} className="hidden md:flex dark:text-black absolute right-0 top-5 lg:right-120 xl:right-16 -translate-y-1/2
         bg-white shadow ring ring-gray-200 p-2 rounded-md z-10" >
         <ChevronRight size={28} />
       </button>

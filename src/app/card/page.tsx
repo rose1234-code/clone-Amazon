@@ -67,9 +67,9 @@ export default function page() {
             </div>
             {/* components card */}
             <div>
-              {listProductCard.map((product,index)=>(
+              {listProductCard.length >0 ?listProductCard.map((product,index)=>(
                 <AddCard key={index} id={product.id} onQtyChange={updateQuantity}  image={product.thumbnail} name={product.title}  price={product.price}/> 
-              ))}
+              )): (<p className='text-xl text-center mt-30'>Add product on Main Section please !</p>)}
             </div>
             
           </div>
