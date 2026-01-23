@@ -1,21 +1,26 @@
-"use client";
+'use client'
 
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import React, {useEffect, useState } from 'react'
+import { FaLongArrowAltRight } from "react-icons/fa";
+// notification succes/erreur
 import { ToastContainer, toast } from 'react-toastify';
 
-import  { useEffect, useRef, useState } from 'react';
+import  { useRef } from 'react';
 // envoie du formulaire par e-mail sans back-end
 import emailjs from '@emailjs/browser';
 // recupere les infos utilisateur connecte sur clerck
 import { useUser } from '@clerk/nextjs';
+import NavBar from '@/components/NavBar';
 
 
 
 
-export default function Page() {
+export default function Contact() {
 
-
+    // recuperation des infos clerck:
+    // isSignedIn → utilisateur connecté ?
+    // user → données de l’utilisateur
+    // isLoaded → Clerk est prêt
     const { isLoaded, isSignedIn, user } = useUser();
 
 
@@ -32,7 +37,9 @@ export default function Page() {
         subject:"",
     })
 
-     useEffect(()=>{
+
+    // si les donnes utilisateurs clerck sont prets et qu'il est connecte et les donnees disponible alors,on met autommatiquement son nom et email dans le payload
+    useEffect(()=>{
         if(isLoaded && isSignedIn && user){
             console.log('user is',user)
             setPayload((prev)=>({
@@ -70,31 +77,57 @@ export default function Page() {
             ).finally(() => setLoading(false));
     }
 
-
- 
-
   return (
-    <>
-    <NavBar/>
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <form ref={form} onSubmit={submitForm} className="w-full max-w-md bg-white p-6 rounded-xl shadow space-y-4">
-        <ToastContainer position='top-right' />
-        <h1 className="text-2xl font-semibold text-center">Contact</h1>
+    <div className='min-h-screen space-y-8 flex flex-col'>
+        <div>
+                    <NavBar/>
+        </div>
+        
+        <div className='bg-gray-100  rounded-2xl flex items-center justify-center  relative  h-screen'>
 
-        <input  required value={payload.name} onChange={(e)=>setPayload({ ...payload,name:e.target.value})} type="text" name="name" placeholder="Nom" className="w-full px-4 py-2 border rounded-md outline-none"/>
+           
+            <div className='flex items-center justify-between  cursor-pointer '>
+                
+                <form ref={form} onSubmit={submitForm} className='shadow bg-white rounded-2xl space-y-5 px-5 py-3'>
 
-        <input  required value={payload.email} onChange={(e)=>setPayload({ ...payload,email:e.target.value})} type="email" name="email" placeholder="Email" className="w-full px-4 py-2 border rounded-md outline-none"/>
+                    <ToastContainer position='top-right' />
 
-        <textarea  required value={payload.subject} onChange={(e)=>setPayload({ ...payload,subject:e.target.value})} name="message" placeholder="Message" className="w-full h-28 px-4 py-2 border rounded-md outline-none resize-none"/>
+                    <div className='flex items-center gap-4 '>
+                        <div className=' text-lg '>
+                            <label htmlFor="" className='block dark:text-black text-lg my-2'>FirstName</label>
+                            {/* value={payload.name} :La valeur affichée dans l’input vient de :payload.name
+                                👉 React contrôle ce champ
+                                👉 L’utilisateur ne peut pas taper sans passer par React 
 
-        <button disabled={loading} type="submit" className={` ${loading ? 'bg-gray-400 cursor-not-allowed':'bg-amber-600 hover:bg-amber-700'}   w-full text-white py-2 rounded-md transition`}>
-          Envoyer
-        </button>
+                                setPayload({ ...payload, name: e.target.value }) Copie l’ancien état (...payload)
+                                Met à jour uniquement name
+                                👉 Respect de l’immutabilité React
+                                👉 Les autres champs du formulaire restent inchangés*/}
+                            <input name='firstName' required value={payload.name} onChange={(e)=>setPayload({ ...payload,name:e.target.value})} type="text" className='px-4 text-md py-2 dark:text-black border border-gray-100 outline-none rounded-md bg-gray-100'  placeholder='Enter your first name'/>
+                        </div>
+                        <div className=''>
+                            <label htmlFor="" className='block dark:text-black text-lg my-2'>Last Name</label>
+                            <input name='lastName' required value={payload.surName} onChange={(e)=>setPayload({ ...payload,surName:e.target.value})} type="text" className='px-4 border text- dark:text-black border-gray-100 outline-none py-2 rounded-md bg-gray-100'  placeholder='Enter your last name'/>
+                        </div>
+                    </div>
+            
+                    <div className=' '>
+                        <label htmlFor="" className='block dark:text-black text-lg my-2'>Email</label>
+                        <input name='email' required value={payload.email} onChange={(e)=>setPayload({ ...payload,email:e.target.value})} type="text" className=' w-full px-4 border text-md dark:text-black border-gray-100 outline-none py-2 rounded-md bg-gray-100'  placeholder='Enter your  email'/>
+                    </div>
 
-      </form>
+                     <div className=''>
+                        <label htmlFor="" className='block dark:text-black text-lg my-2'>How can we help you ?</label>
+                        <textarea name='massage' required value={payload.subject} onChange={(e)=>setPayload({ ...payload,subject:e.target.value})} className='border border-gray-200 px-3 py-2 text-md dark:text-black outline-none bg-gray-100 w-full rounded-md h-[100px] ' id=""></textarea>
+                    </div>
+                    <button  disabled={loading} className={` ${loading ? 'bg-gray-400 cursor-not-allowed':'bg-amber-600 hover:bg-amber-700'}  shadow  float-right flex items-center gap-2 rounded-md px-3 py-1 text-lg text-white`}>Sent Message
+                        <FaLongArrowAltRight color='black' className='border bg-white rounded-md w-[30px] p-1 h-[30px]' />
+                    </button>
+                </form>
+            </div>
+
+        </div>
     </div>
-    <Footer/>
-
-    </>
-  );
+  )
 }
+            
