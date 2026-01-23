@@ -1,15 +1,22 @@
 'use client'
 
-import React, {  useRef, useState } from 'react'
-import { Heart } from 'lucide-react'
-import {Search,ShoppingBag ,ChevronDown,ChevronUp} from 'lucide-react';
+import React, {  useEffect,  useState } from 'react'
+import { Heart, CircleUser  } from 'lucide-react'
+import {Search,ShoppingBag ,ChevronDown} from 'lucide-react';
 import { useStoreFavorite } from '@/store/favorite.store';
 import Link from 'next/link';
 import { Menu, MapPinPlus } from 'lucide-react';
-
 import { useStoreCard } from '@/store/card.store';
 import { useRouter } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
+
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 
 
@@ -18,21 +25,8 @@ import { ModeToggle } from './ModeToggle';
 export default function NavBar() {
 
 
-    // state of variables
-    const [language,setLanguage]=useState("EN")
-    const [visible,setVisible]=useState(true)
-    const containRef=useRef<HTMLDivElement>(null)
-    const [country,setCountry]=useState("canada")
-
-
-    // definition of references
-
-    const handleCountry=(state:string)=>{
-        setCountry(state)
-        setVisible(!visible)
-    }
-    const {selectedCardIds}=useStoreCard()
-   const {selectedFavoriteIds,toggleHeartIcon,}=useStoreFavorite()
+  const {selectedCardIds}=useStoreCard()
+  const {selectedFavoriteIds}=useStoreFavorite()
 
   //  recherche
   const [query,setQuery]=useState('')
@@ -44,10 +38,25 @@ export default function NavBar() {
     router.push(`/search?query=${query}`)
 
   }
+
+  const [scrolled,setScrolled]=useState(false)
+
+    useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50)
+  }
+
+  window.addEventListener("scroll", handleScroll)
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll)
+  }
+}, [])
+
   return (
     <>
-    <div className='fixed left-0 z-100 w-full'>
-    <div className= {`flex   items-center justify-between w-full  overflow-hidden bg-gray-700 dark:bg-[#0F172A] px-3  lg:px-10`}>
+    <div className={`   fixed left-0 z-100 w-full`}>
+    <div className= {`   fixed md:top-0 left-0 z-50 w-full transition-all duration-300 bg-background/80 backdrop-blur ${scrolled ? "top-3 h-16 rounded-md shadow-lg" : "h-20"}  flex   items-center justify-between w-full  b overflow-hidden bg-gray-700 dark:bg-[#0F172A] px-3  lg:px-10`}>
       <div className='flex  items-center gap-1 py-3 lg:py-0 lg:w-[10%]'>
         <div className=' lg:hidden'>
          <Menu size={28} color='white' />               
@@ -80,27 +89,33 @@ export default function NavBar() {
               <ShoppingBag size={28}  color='pink' className='cursor-pointer relative' />
               <span className='absolute  text-white bg-[#EF4444] p-1 text-2xl  left-3 -top-3 flex items-center justify-center w-6 h-6 text-white rounded-full'>{selectedCardIds.length}</span>
             </Link>
-
-          <div onClick={()=>{setLanguage(language==='EN' ? 'FR':'EN')}} className='border-2 cursor-pointer 
-           border-[#364463] rounded-md px-0.5 text-white tex-2xl'>
-            {language}
-          </div>
-          <div ref={containRef}  className='hidden lg:flex text-[rgb(255,255,255)]' >
-            <div onClick={()=>{setVisible(prev=>!prev)}}  className='flex cursor-pointer items-center gap-1 font-bold text-xl'>{country}
-                {visible===true?(<ChevronDown /> ):(<ChevronUp />)}
-            </div>
-            {!visible && ( <div className='absolute z-50 font-bold  -right-2  top-[75px] w-[130px] p-1 cursor-pointer  shadow '>
-                <ul className='text-[#FFFFFF] bg-yellow-600 rounded-md text-semibold'>
-                    <li onClick={()=>handleCountry('canada')} className='hover:bg-blue-600 hover:text-white p-2 rounded-md text-md font-semibold '>Canada</li>
-                    <li onClick={()=>handleCountry('united states')} className='hover:bg-blue-600 hover:text-white p-2 rounded-md text-md font-semibold'>United states</li>
-                </ul>
-            </div> )}
-          </div>
-
+            <Link href="/contact">  <CircleUser  color='white' size={30}/> </Link>
           <div>
             <ModeToggle/>
           </div>
       </div>
+
+      {/* authentification */}
+
+       <div className="hidden lg:flex items-center gap-3">
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="px-2 py-1 rounded-full border border-white text-white hover:bg-white hover:text-black transition">
+                Sign in
+              </button>
+            </SignInButton>
+          
+            <SignUpButton mode="modal">
+              <button className="px-2 py-1 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition">
+                Sign up
+              </button>
+            </SignUpButton>
+          </SignedOut>
+          
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
 
     </div>
     {/* uniquement sur mobile */}
@@ -112,7 +127,7 @@ export default function NavBar() {
       </form>    
 
   </div>
-      <div className='w-full  lg:hidden px-5 flex items-center text-xl gap-1 bg-[#182541]  pt-40 py-4 text-white'> <MapPinPlus color='white' size={28} /> Deliver to cameroun <ChevronDown  size={28}/></div>
+  <div className='w-full  lg:hidden px-5 flex items-center text-xl gap-1 bg-[#182541]  pt-40 py-4 text-white'> <MapPinPlus color='white' size={28} /> Deliver to cameroun <ChevronDown  size={28}/></div>
 </>
   )               
 }
