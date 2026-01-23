@@ -5,11 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
+ 
 } from '@clerk/nextjs'
 
 const geistSans = Geist({
@@ -45,9 +41,11 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+
           <ClerkProvider>
             {children}
           </ClerkProvider>
+
         </ThemeProvider>
       </body>
     </html>
